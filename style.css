@@ -26,9 +26,17 @@
     background-color: gray;
 }
 
-.keyboard{
+.colors-input{
     display: flex;
     justify-content: space-around;
+}
+
+#submit{
+    background-color: gray;
+    color: white;
+    text-align: center;
+    width: 5rem;
+    margin: 1rem auto;
 }
 
 .color{
