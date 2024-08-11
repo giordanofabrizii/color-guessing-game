@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: dimgray;
+}
+
+.game{
+    width: 40rem;
+    margin: 0 auto;
+    padding: .5rem;
+    background-color: black;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: .5rem;    
+    margin: .5rem 2rem;
+    background-color: gray;
+}
+
+.keyboard{
+    display: flex;
+    justify-content: space-around;
+}
+
+.color{
+    height: 3rem;
+    width: 3rem;
+    background-color: rgb(61, 61, 61);
+}
+
+.color.selected{
+    border: 2px solid white;
+}
+
+.color.red{
+    background-color: red;
+}
+
+.color.pink{
+    background-color: pink;
+}
+
+.color.purple{
+    background-color: purple;
+}
+
+.color.yellow{
+    background-color: rgb(255, 230, 0);
+}
+
+.color.green{
+    background-color: green;
+}
+
+.color.blue{
+    background-color: blue;
+}
+
+.color.orange{
+    background-color: rgb(255, 136, 0);
+}
