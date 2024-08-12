@@ -39,6 +39,15 @@
     margin: 1rem auto;
 }
 
+#errors{
+    text-align: center;
+    color: white;
+}
+
+#errors > *{
+    display: none;
+}
+
 .color{
     height: 3rem;
     width: 3rem;
