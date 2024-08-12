@@ -57,22 +57,30 @@ submitEl.addEventListener("click", () => {
         actualRow.forEach((cell, index) => {
             // store the trial
             cell.classList = "color " + colorsInput[index];
-        })
-        tryIndex++;
-        
-        // check the win
-        let result = controlWin(colorsInput, combination)
+        })        
+        // check the win and score the result
+        let result = controlWin(colorsInput, combination);
+        let correctIndexEl = document.getElementById("score-index");
+        let resultsEl = document.querySelector("#results > p");
+        let scoreEl = document.getElementById("score");
+        scoreEl.style.display = "block";
         switch (result) {
             case false:
                 console.log('sbagliata');
+                correctIndexEl.innerHTML = 0;
                 break;
             case true:
+                resultsEl.innerHTML = "YOU WON";
+                document.getElementById("game").style.display = "none";
+                document.getElementById("results").style.display = "block";
                 console.log('giusta');
                 break;
             default:
                 console.log(result);
+                correctIndexEl.innerHTML = result.length;
             }
-
+        tryIndex++;
+        
     } else {
         document.getElementById("color-length").style.display = "block"
     }
@@ -116,4 +124,23 @@ function controlWin(tryList, correctList){
     } else {
         return array;
     }
+}
+
+function restart(){
+    selectedIndex = 0;
+    tryIndex = 1;
+    combination = randomCombination();
+    colorsInput = [];
+
+    for (let i = 0; i < 5; i ++){
+        rows[i].innerHTML = [];
+        for (let j = 0; j < 5; j ++){
+            let el = document.createElement("div");
+            el.classList = "color";
+            rows[i].appendChild(el);
+        }
+    }
+
+    document.getElementById("results").style.display = "none";
+    document.getElementById("game").style.display = "flex";
 }

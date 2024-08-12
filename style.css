@@ -10,7 +10,7 @@
     background-color: dimgray;
 }
 
-.game{
+#game{
     width: 40rem;
     margin: 0 auto;
     padding: .5rem;
@@ -39,12 +39,14 @@
     margin: 1rem auto;
 }
 
-#errors{
+#errors,
+#score{
     text-align: center;
     color: white;
 }
 
-#errors > *{
+#errors > *,
+#score{
     display: none;
 }
 
