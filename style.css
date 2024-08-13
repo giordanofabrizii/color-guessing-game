@@ -46,7 +46,8 @@
 }
 
 #errors > *,
-#score{
+#score,
+#results{
     display: none;
 }
 

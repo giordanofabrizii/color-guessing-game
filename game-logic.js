@@ -1,8 +1,9 @@
 let selectedIndex = 0;
 let tryIndex = 1;
-const rows = document.querySelectorAll(".game > .row:not(.control)");
+const rows = document.querySelectorAll("#game > .row:not(.control)");
 let colorsInput = [];
 let combination = randomCombination();
+document.getElementById("restart").addEventListener("click", restart);
 
 // function to change the selected input
 const inputEls = document.querySelectorAll(".control > .color")
@@ -66,20 +67,22 @@ submitEl.addEventListener("click", () => {
         scoreEl.style.display = "block";
         switch (result) {
             case false:
-                console.log('sbagliata');
                 correctIndexEl.innerHTML = 0;
                 break;
             case true:
                 resultsEl.innerHTML = "YOU WON";
                 document.getElementById("game").style.display = "none";
                 document.getElementById("results").style.display = "block";
-                console.log('giusta');
                 break;
             default:
-                console.log(result);
                 correctIndexEl.innerHTML = result.length;
             }
         tryIndex++;
+        if (tryIndex >= 5) {
+            resultsEl.innerHTML = "YOU LOSE"
+            document.getElementById("game").style.display = "none";
+            document.getElementById("results").style.display = "block";
+        }
         
     } else {
         document.getElementById("color-length").style.display = "block"
@@ -131,6 +134,7 @@ function restart(){
     tryIndex = 1;
     combination = randomCombination();
     colorsInput = [];
+    let controlList = document.querySelectorAll(".row.control > *");
 
     for (let i = 0; i < 5; i ++){
         rows[i].innerHTML = [];
@@ -139,8 +143,12 @@ function restart(){
             el.classList = "color";
             rows[i].appendChild(el);
         }
+        controlList[i].classList = "color";
+        if (i == 0) {
+            controlList[i].classList.add("selected");
+        }
     }
 
     document.getElementById("results").style.display = "none";
-    document.getElementById("game").style.display = "flex";
+    document.getElementById("game").style.display = "block";
 }
