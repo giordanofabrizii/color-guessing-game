@@ -186,7 +186,6 @@ function resetInput() {
 function endGame() {
     document.getElementById("game").style.display = "none";
     document.getElementById("results").style.display = "flex";   
-    console.log(combination)
 
     const showCombinationEl = document.querySelectorAll("#correct-combination > div");
     for (let i = 0; i < 5; i ++){
