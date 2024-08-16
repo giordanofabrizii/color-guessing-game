@@ -27,7 +27,8 @@ h1{
     border-radius: 8px;
 }
 
-.row{
+.row,
+#correct-combination{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
