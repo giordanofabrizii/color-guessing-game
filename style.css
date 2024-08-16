@@ -43,9 +43,15 @@ h1{
     justify-content: space-around;
 }
 
-.keyboard{
+.keyboard,
+#results{
     display: flex;
     flex-direction: column;
+}
+
+#results > h3,
+#results > p{
+    padding: 0 2rem;
 }
 
 button{
@@ -55,7 +61,6 @@ button{
     border-radius: 4px;
     padding: .5rem 3rem;
     margin: 1rem auto;
-    max-width: 7rem;
 }
 
 #errors,
