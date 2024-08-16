@@ -5,7 +5,7 @@ let colorsInput = [];
 let combination = randomCombination();
 document.getElementById("restart").addEventListener("click", restart);
 
-// function to change the selected input
+// change the selected input to the next one available
 const inputEls = document.querySelectorAll(".control > .color")
 inputEls.forEach((inputEl, index) => {
     inputEl.addEventListener('click', () => {
@@ -15,7 +15,7 @@ inputEls.forEach((inputEl, index) => {
     })
 });
 
-// function to control the click event on the keyboard
+// control the click event on the colors keyboard
 const colorKeys = document.querySelectorAll(".colors-input > .color");
 colorKeys.forEach(colorKey => {
    colorKey.addEventListener('click', () => {
@@ -38,7 +38,7 @@ colorKeys.forEach(colorKey => {
    })
 });
 
-// submit event
+// submit event with the enter key or the button
 let submitEl = document.getElementById("submit");
 submitEl.addEventListener("click", enter)
 document.addEventListener('keydown', function(event) {
@@ -47,6 +47,9 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+/**
+ * take the inserted combination and store them, then check the win
+ */
 function enter() {
     // start the function
     colorsInput = [];
@@ -69,7 +72,7 @@ function enter() {
         // check the win and score the result
         let result = controlWin(colorsInput, combination);
         let correctIndexEl = document.getElementById("score-index");
-        let resultsEl = document.querySelector("#results > p");
+        let resultsEl = document.querySelector("#results > h3");
         let scoreEl = document.getElementById("score");
         scoreEl.style.display = "block";
         switch (result) {
@@ -79,18 +82,16 @@ function enter() {
                 break;
             case true:
                 resultsEl.innerHTML = "YOU WON";
-                document.getElementById("game").style.display = "none";
-                document.getElementById("results").style.display = "block";
+                endGame();
                 break;
             default:
                 correctIndexEl.innerHTML = result.length;
                 resetInput();
             }
         tryIndex++;
-        if (tryIndex >= 6) {
+        if (tryIndex >= 8) {
             resultsEl.innerHTML = "YOU LOSE"
-            document.getElementById("game").style.display = "none";
-            document.getElementById("results").style.display = "block";
+            endGame();
         }
         
     } else {
@@ -138,12 +139,16 @@ function controlWin(tryList, correctList){
     }
 }
 
+/**
+ * reset all the variables and restart the game
+ * 
+ */
 function restart(){
     tryIndex = 1;
     combination = randomCombination();
     colorsInput = [];
 
-    for (let i = 0; i < 5; i ++){
+    for (let i = 0; i < 7; i ++){
         rows[i].innerHTML = [];
         for (let j = 0; j < 5; j ++){
             let el = document.createElement("div");
@@ -159,6 +164,10 @@ function restart(){
     document.getElementById("game").style.display = "block";
 }
 
+/**
+ * take all the reset fields and reset them
+ * 
+ */
 function resetInput() {
     let controlList = document.querySelectorAll(".row.control > *");
     selectedIndex = 0;
@@ -167,5 +176,21 @@ function resetInput() {
         if (i == 0) {
             controlList[i].classList.add("selected");
         }       
+    }
+}
+
+/**
+ * show the results and the correct combination
+ * 
+ */
+function endGame() {
+    document.getElementById("game").style.display = "none";
+    document.getElementById("results").style.display = "block";   
+    console.log(combination)
+
+    const showCombinationEl = document.querySelectorAll("#correct-combination > div");
+    for (let i = 0; i < 5; i ++){
+        showCombinationEl[i].classList = "color";
+        showCombinationEl[i].classList.add(combination[i]);
     }
 }
