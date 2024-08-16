@@ -104,7 +104,7 @@ function enter() {
  * @returns array
  */
 function randomCombination(){
-    const colors = ['red','pink','purple','yellow','green','blue','orange'];
+    const colors = ['red','purple','green','blue','orange'];
     let list = [];
     while(list.length != 5){
         let num = Math.floor(Math.random() * colors.length);
