@@ -8,6 +8,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #0d0d0d;
+    overflow: scroll;
 }
 
 h1{
@@ -112,4 +113,15 @@ button{
 
 .color.orange{
     background-color: rgb(255, 136, 0);
+}
+
+/* #############################
+????????? MEDIA QUERY ?????????
+############################# */
+
+@media screen and (max-width: 600px) {
+    #game {
+        width: 100vw;
+        min-width: 350px;
+    }   
 }
